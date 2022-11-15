@@ -11,7 +11,7 @@ public class AcceptanceTest {
   @Test public void add_two_numbers_together() {
     OutputWriter mockConsole = mock(OutputWriter.class);
     Operator additionOperator = new Add();
-    CalculatorService calculatorService = new CalculatorService(additionOperator);
+    CalculatorService calculatorService = new CalculatorService(additionOperator, mockConsole);
     calculatorService.calculate("1 + 3");
     verify(mockConsole, times(1)).printLine("4");
   }
