@@ -1,20 +1,23 @@
 package com.codurance;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class AddTest {
 
-    @Test
-    public void add_two_positive_numbers_together() {
-        int firstNumber = 5;
-        int secondNumber = 3;
-        int expectedAnswer = 8;
+    @ParameterizedTest
+    @CsvSource({
+        "5,3,8",
+        "6,4,10",
+        "-4,20,16"})
+    public void add_two_numbers_together(int firstNumber, int secondNumber, int expectedAnswer) {
         Add operator = new Add();
 
         int result = operator.execute(firstNumber, secondNumber);
 
         assertEquals(expectedAnswer, result);
     }
+
 }
