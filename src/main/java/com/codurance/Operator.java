@@ -2,5 +2,5 @@ package com.codurance;
 
 public interface Operator {
 
-  void execute(int... i) ;
+  int execute(int... i) ;
 }

@@ -10,7 +10,7 @@ public class AcceptanceTest {
 
   @Test public void add_two_numbers_together() {
     OutputWriter mockConsole = mock(OutputWriter.class);
-    Operator additionOperator;
+    Operator additionOperator = new Add();
     CalculatorService calculatorService = new CalculatorService(additionOperator);
     calculatorService.calculate("1 + 3");
     verify(mockConsole, times(1)).printLine("4");
