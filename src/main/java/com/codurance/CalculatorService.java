@@ -16,6 +16,7 @@ public class CalculatorService {
 
   public void calculate(String s) {
     List<Integer> operands = parser.parse(s);
+
     int result = operator.execute(operands.get(0), operands.get(1));
     outputWriter.printLine(String.valueOf(result));
   }
