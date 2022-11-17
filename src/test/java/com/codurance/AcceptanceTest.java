@@ -14,8 +14,8 @@ public class AcceptanceTest {
     Operator additionOperator = new Add();
     CalculatorService calculatorService = new CalculatorService(additionOperator, mockConsole,
         parser);
-    calculatorService.calculate("1 + 3");
-    verify(mockConsole, times(1)).printLine("4");
+    calculatorService.calculate("1564 + 36574");
+    verify(mockConsole, times(1)).printLine("38138");
   }
 
 }
