@@ -1,5 +1,7 @@
 package com.codurance;
 
+import java.util.List;
+
 public interface EquationParser {
-    void parse(String s);
+    List<Integer> parse(String s);
 }
