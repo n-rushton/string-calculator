@@ -5,22 +5,20 @@ import java.util.List;
 public class TwoOperandParser implements EquationParser {
 
   @Override
-  public List<Integer> parse(String s) {
+  public List<Integer> parse(String equation) {
 
-    char firstChar = s.charAt(0);
-    String firstString = String.valueOf(firstChar);
-    if (' ' != s.charAt(1)) {
-      char secondCharFirstNumber = s.charAt(1);
-      firstString = firstString.concat(String.valueOf(secondCharFirstNumber));
+    String firstString = "";
 
-      if (' ' != s.charAt(2)) {
-        char thirdCharFirstNumber = s.charAt(2);
-        firstString = firstString.concat(String.valueOf(thirdCharFirstNumber));
+    for (int i = 0; i < equation.length(); i++) {
+      if (' ' == equation.charAt(i)) {
+        break;
       }
+      firstString += equation.charAt(i);
     }
+
     Integer firstInt = Integer.parseInt(firstString);
 
-    char secondChar = s.charAt(s.length() - 1);
+    char secondChar = equation.charAt(equation.length() - 1);
     String secondString = String.valueOf(secondChar);
     Integer secondInt = Integer.parseInt(secondString);
     return List.of(firstInt, secondInt);
