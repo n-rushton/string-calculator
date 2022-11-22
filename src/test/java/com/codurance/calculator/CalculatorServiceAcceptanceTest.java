@@ -1,13 +1,14 @@
-package com.codurance;
+package com.codurance.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
+import com.codurance.calculator.operators.Add;
+import com.codurance.calculator.operators.Operator;
+import com.codurance.calculator.parsers.EquationParser;
+import com.codurance.calculator.parsers.TwoOperandParser;
 import org.junit.jupiter.api.Test;
 
-public class AcceptanceTest {
+public class CalculatorServiceAcceptanceTest {
 
   @Test public void add_two_numbers_together() {
     EquationParser parser = new TwoOperandParser();

@@ -1,4 +1,4 @@
-package com.codurance;
+package com.codurance.calculator.parsers;
 
 import java.util.List;
 

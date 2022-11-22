@@ -1,5 +1,7 @@
-package com.codurance;
+package com.codurance.calculator;
 
+import com.codurance.calculator.operators.Operator;
+import com.codurance.calculator.parsers.EquationParser;
 import java.util.List;
 
 public class CalculatorService {

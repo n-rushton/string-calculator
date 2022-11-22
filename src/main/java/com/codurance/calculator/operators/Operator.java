@@ -1,4 +1,4 @@
-package com.codurance;
+package com.codurance.calculator.operators;
 
 public interface Operator {
 

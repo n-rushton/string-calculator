@@ -1,4 +1,4 @@
-package com.codurance;
+package com.codurance.calculator.parsers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
