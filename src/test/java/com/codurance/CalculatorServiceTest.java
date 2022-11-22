@@ -1,5 +1,6 @@
 package com.codurance;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -13,7 +14,6 @@ public class CalculatorServiceTest {
 
   Operator mockOperator;
   EquationParser mockParser;
-  OutputWriter mockOutputWriter;
   CalculatorService calculatorService;
 
 
@@ -21,9 +21,8 @@ public class CalculatorServiceTest {
   void setUp() {
     mockOperator = mock(Operator.class);
     mockParser = mock(EquationParser.class);
-    mockOutputWriter = mock(OutputWriter.class);
-    calculatorService = new CalculatorService(mockOperator, mockOutputWriter,
-        mockParser);
+    calculatorService = new CalculatorService(mockOperator,
+            mockParser);
   }
 
   @Test
@@ -49,9 +48,9 @@ public class CalculatorServiceTest {
     when(mockParser.parse("2 + 3")).thenReturn(List.of(2, 3));
     when(mockOperator.execute(2,3)).thenReturn(5);
 
-    calculatorService.calculate("2 + 3");
+    int result = calculatorService.calculate("2 + 3");
 
-    verify(mockOutputWriter, times(1)).printLine("5");
+    assertEquals(5, result);
   }
 
   @Test
@@ -59,9 +58,9 @@ public class CalculatorServiceTest {
     when(mockParser.parse("6 + 1")).thenReturn(List.of(6, 1));
     when(mockOperator.execute(6, 1)).thenReturn(7);
 
-    calculatorService.calculate("6 + 1");
+    int result = calculatorService.calculate("6 + 1");
 
-    verify(mockOutputWriter, times(1)).printLine("7");
+    assertEquals(7, result);
   }
 
 }
