@@ -18,9 +18,16 @@ public class TwoOperandParser implements EquationParser {
 
     Integer firstInt = Integer.parseInt(firstString.toString());
 
-    char secondChar = equation.charAt(equation.length() - 1);
-    String secondString = String.valueOf(secondChar);
-    Integer secondInt = Integer.parseInt(secondString);
+    StringBuilder secondString = new StringBuilder();
+
+    for (int i = firstString.length() + 3; i < equation.length(); i++) {
+      if (' ' == equation.charAt(i)) {
+        break;
+      }
+      secondString.append(equation.charAt(i));
+    }
+
+    Integer secondInt = Integer.parseInt(secondString.toString());
     return List.of(firstInt, secondInt);
   }
 }

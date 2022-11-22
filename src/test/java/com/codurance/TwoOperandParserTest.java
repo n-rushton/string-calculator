@@ -25,7 +25,11 @@ public class TwoOperandParserTest {
             Arguments.of("8 + 4", List.of(8, 4)),
             Arguments.of("18 + 4", List.of(18, 4)),
             Arguments.of("182 + 4", List.of(182, 4)),
-            Arguments.of("1825 + 4", List.of(1825, 4)));
+            Arguments.of("1825 + 4", List.of(1825, 4)),
+            Arguments.of("8 + 42", List.of(8, 42)),
+            Arguments.of("168 + 428964", List.of(168, 428964))
+
+        );
     }
 
 }
