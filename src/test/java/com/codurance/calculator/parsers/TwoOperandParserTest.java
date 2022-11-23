@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -31,8 +32,17 @@ public class TwoOperandParserTest {
             Arguments.of("168+ 428964", List.of(168, 428964)),
             Arguments.of("168 +428964", List.of(168, 428964)),
             Arguments.of("168+428964", List.of(168, 428964))
-
         );
+    }
+
+    @Test
+    public void extract_two_numbers_from_subtraction_equation() {
+        TwoOperandParser parser = new TwoOperandParser();
+
+        List<Integer> resultantList = parser.parse("25 - 5");
+
+        List<Integer> expectedList = List.of(25, 5);
+        assertEquals(expectedList, resultantList);
     }
 
 }

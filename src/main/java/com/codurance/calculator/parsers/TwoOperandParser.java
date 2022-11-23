@@ -7,7 +7,7 @@ public class TwoOperandParser implements EquationParser {
   @Override
   public List<Integer> parse(String equation) {
 
-    String[] splitEquation = equation.split("\\+");
+    String[] splitEquation = equation.split("[+-]");
 
     String firstString = splitEquation[0];
     Integer firstInt = Integer.parseInt(firstString.strip());
