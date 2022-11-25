@@ -28,7 +28,7 @@ public class CalculatorServiceAcceptanceTest {
 
     int result = calculatorService.calculate("2500 - 12");
 
-    assertEquals(2478, result);
+    assertEquals(2488, result);
   }
 
 }
