@@ -26,9 +26,9 @@ public class CalculatorServiceAcceptanceTest {
     Operator subtractionOperator = new Subtract();
     CalculatorService calculatorService = new CalculatorService(subtractionOperator, parser);
 
-    int result = calculatorService.calculate("2500 - 12");
+    int result = calculatorService.calculate("2500 - -12");
 
-    assertEquals(2488, result);
+    assertEquals(2512, result);
   }
 
 }
