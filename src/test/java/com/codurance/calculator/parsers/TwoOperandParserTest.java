@@ -12,7 +12,7 @@ public class TwoOperandParserTest {
 
     @ParameterizedTest
     @MethodSource("generateAdditionEquations")
-    public void extract_two_numbers_from_string(String equation, List<Integer> expectedList) {
+    public void extract_two_numbers_from_addition_equation(String equation, List<Integer> expectedList) {
         TwoOperandParser parser = new TwoOperandParser();
 
         List<Integer> resultantList = parser.parse(equation);
