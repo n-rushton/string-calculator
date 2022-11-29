@@ -6,14 +6,11 @@ public class TwoOperandParser implements EquationParser {
 
   @Override
   public List<Integer> parse(String equation) {
+    String equationWithoutSpaces = equation.replace(" ", "");
+    String[] operands = equationWithoutSpaces.split("(?<=\\d)[+-]");
 
-    String[] splitEquation = equation.split("\\+");
-
-    String firstString = splitEquation[0];
-    Integer firstInt = Integer.parseInt(firstString.strip());
-
-    String secondString = splitEquation[1];
-    Integer secondInt = Integer.parseInt(secondString.strip());
+    Integer firstInt = Integer.parseInt(operands[0]);
+    Integer secondInt = Integer.parseInt(operands[1]);
 
     return List.of(firstInt, secondInt);
   }
