@@ -1,10 +1,7 @@
 package com.codurance.calculator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.codurance.calculator.operators.Operator;
 import com.codurance.calculator.parsers.EquationParser;
@@ -46,7 +43,7 @@ public class CalculatorServiceTest {
   }
 
   @Test
-  public void service_invokes_output_writer() {
+  public void service_return_result_of_2_add_3() {
     when(mockParser.parse("2 + 3")).thenReturn(List.of(2, 3));
     when(mockOperator.execute(2,3)).thenReturn(5);
 
@@ -56,13 +53,25 @@ public class CalculatorServiceTest {
   }
 
   @Test
-  public void service_invokes_output_writer_2() {
+  public void service_return_result_of_6_add_1() {
     when(mockParser.parse("6 + 1")).thenReturn(List.of(6, 1));
     when(mockOperator.execute(6, 1)).thenReturn(7);
 
     int result = calculatorService.calculate("6 + 1");
 
     assertEquals(7, result);
+  }
+
+  @Test
+  public void service_invokes_correct_operator() {
+    Operator usedOperator = mock(Operator.class);
+    Operator notUsedOperator = mock(Operator.class);
+
+    CalculatorService calculatorService = new CalculatorService(List.of(notUsedOperator, usedOperator), mockParser);
+    calculatorService.calculate("8 + 3");
+
+    verify(usedOperator, times(1)).execute(8,3);
+    verify(notUsedOperator, never()).execute(8,3);
   }
 
 }

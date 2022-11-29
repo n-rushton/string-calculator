@@ -14,6 +14,10 @@ public class CalculatorService {
     this.parser = parser;
   }
 
+  public CalculatorService(List<Operator> operators, EquationParser parser) {
+    throw new UnsupportedOperationException();
+  }
+
   public int calculate(String s) {
     List<Integer> operands = parser.parse(s);
 
