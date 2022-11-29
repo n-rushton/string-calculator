@@ -9,7 +9,7 @@ import java.io.IOException;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-public class ConsoleAppTest {
+public class CalculatorAppTest {
 
     OutputWriter mockOutputWriter = mock(OutputWriter.class);
     BufferedReader mockScanner = mock(BufferedReader.class);

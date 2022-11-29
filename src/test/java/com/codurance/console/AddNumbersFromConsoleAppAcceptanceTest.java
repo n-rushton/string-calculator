@@ -18,7 +18,11 @@ public class AddNumbersFromConsoleAppAcceptanceTest {
         BufferedReader mockScanner = mock(BufferedReader.class);
         when(mockScanner.readLine()).thenReturn("1+ 7");
 
-        new CalculatorApp(mockOutputWriter, mockScanner, new CalculatorService(new Add(), new TwoOperandParser())).run();
+        new CalculatorApp(
+                mockOutputWriter,
+                mockScanner,
+                new CalculatorService(new Add(), new TwoOperandParser())
+            ).run();
 
         verify(mockOutputWriter, times(1)).printLine("enter calculation:");
         verify(mockOutputWriter, times(1)).printLine("8");
