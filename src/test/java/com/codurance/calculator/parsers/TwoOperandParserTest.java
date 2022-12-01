@@ -53,4 +53,9 @@ public class TwoOperandParserTest {
         );
     }
 
+//    @Test
+//    public void extract_equation_from_expression() {
+//
+//    }
+
 }

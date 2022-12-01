@@ -10,6 +10,6 @@ public class Add implements Operator {
 
     @Override
     public CharSequence getSymbol() {
-        return null;
+        return "+";
     }
 }

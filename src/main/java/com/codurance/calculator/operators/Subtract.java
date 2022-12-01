@@ -9,7 +9,7 @@ public class Subtract implements Operator {
 
   @Override
   public CharSequence getSymbol() {
-    return null;
+    return "-";
   }
 
 }

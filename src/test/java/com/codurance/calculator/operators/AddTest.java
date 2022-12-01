@@ -2,6 +2,7 @@ package com.codurance.calculator.operators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -18,6 +19,11 @@ public class AddTest {
         int result = operator.execute(firstNumber, secondNumber);
 
         assertEquals(expectedAnswer, result);
+    }
+
+    @Test
+    public void get_symbol_returns_plus() {
+        assertEquals("+", new Add().getSymbol());
     }
 
 }
