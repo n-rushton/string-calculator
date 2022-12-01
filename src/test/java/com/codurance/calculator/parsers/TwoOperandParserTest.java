@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.stream.Stream;
+
+import com.codurance.calculator.operators.Add;
+import com.codurance.calculator.operators.Operator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -53,9 +57,15 @@ public class TwoOperandParserTest {
         );
     }
 
-//    @Test
-//    public void extract_equation_from_expression() {
-//
-//    }
+    @Test
+    public void extract_equation_from_expression() {
+        Operator operator = new Add();
+        Equation expectedEquation = new Equation(operator, List.of(23,75));
+        EquationParser parser = new TwoOperandParser(List.of(operator));
+
+        Equation resultantEquation = parser.parseExpression("23 + 75");
+
+        assertEquals(expectedEquation, resultantEquation);
+    }
 
 }

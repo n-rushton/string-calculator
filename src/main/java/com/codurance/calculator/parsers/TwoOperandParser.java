@@ -1,8 +1,20 @@
 package com.codurance.calculator.parsers;
 
+import com.codurance.calculator.operators.Operator;
+
 import java.util.List;
 
 public class TwoOperandParser implements EquationParser {
+
+  private List<Operator> operators;
+
+  public TwoOperandParser() {
+    operators = List.of();
+  }
+
+  public TwoOperandParser(List<Operator> operators) {
+    this.operators = operators;
+  }
 
   @Override
   public List<Integer> parse(String equation) {
@@ -13,6 +25,23 @@ public class TwoOperandParser implements EquationParser {
     Integer secondInt = Integer.parseInt(operands[1]);
 
     return List.of(firstInt, secondInt);
+  }
+
+  @Override
+  public Equation parseExpression(String expression) {
+    List<Integer> operands = parse(expression);
+    Operator operator = getOperator(expression);
+    return new Equation(operator, operands);
+  }
+
+  private Operator getOperator(String expression) {
+    for (Operator operator: operators) {
+      if (expression.contains(operator.getSymbol())) {
+        return operator;
+      }
+    }
+
+    throw new UnsupportedOperationException();
   }
 
 }
