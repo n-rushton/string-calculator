@@ -11,16 +11,17 @@ import org.junit.jupiter.api.Test;
 
 public class CalculatorServiceTest {
 
-  Operator mockOperator;
+  Operator mockAdditionOperator;
   EquationParser mockParser;
   CalculatorService calculatorService;
 
 
   @BeforeEach
   void setUp() {
-    mockOperator = mock(Operator.class);
+    mockAdditionOperator = mock(Operator.class);
+    when(mockAdditionOperator.getSymbol()).thenReturn("+");
     mockParser = mock(EquationParser.class);
-    calculatorService = new CalculatorService(mockOperator,
+    calculatorService = new CalculatorService(mockAdditionOperator,
             mockParser);
   }
 
@@ -30,7 +31,7 @@ public class CalculatorServiceTest {
 
     calculatorService.calculate("1 + 2");
 
-    verify(mockOperator, times(1)).execute(1, 2);
+    verify(mockAdditionOperator, times(1)).execute(1, 2);
   }
 
   @Test
@@ -45,7 +46,7 @@ public class CalculatorServiceTest {
   @Test
   public void service_return_result_of_2_add_3() {
     when(mockParser.parse("2 + 3")).thenReturn(List.of(2, 3));
-    when(mockOperator.execute(2,3)).thenReturn(5);
+    when(mockAdditionOperator.execute(2,3)).thenReturn(5);
 
     int result = calculatorService.calculate("2 + 3");
 
@@ -55,7 +56,7 @@ public class CalculatorServiceTest {
   @Test
   public void service_return_result_of_6_add_1() {
     when(mockParser.parse("6 + 1")).thenReturn(List.of(6, 1));
-    when(mockOperator.execute(6, 1)).thenReturn(7);
+    when(mockAdditionOperator.execute(6, 1)).thenReturn(7);
 
     int result = calculatorService.calculate("6 + 1");
 
@@ -66,6 +67,9 @@ public class CalculatorServiceTest {
   public void service_invokes_correct_operator() {
     Operator usedOperator = mock(Operator.class);
     Operator notUsedOperator = mock(Operator.class);
+    when(mockParser.parse("8 + 3")).thenReturn(List.of(8, 3));
+    when(usedOperator.getSymbol()).thenReturn("+");
+    when(notUsedOperator.getSymbol()).thenReturn("-");
 
     CalculatorService calculatorService = new CalculatorService(List.of(notUsedOperator, usedOperator), mockParser);
     calculatorService.calculate("8 + 3");

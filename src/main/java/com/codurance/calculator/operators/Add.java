@@ -7,4 +7,9 @@ public class Add implements Operator {
     public int execute(int... operands) {
         return Arrays.stream(operands).sum();
     }
+
+    @Override
+    public CharSequence getSymbol() {
+        return null;
+    }
 }

@@ -7,4 +7,9 @@ public class Subtract implements Operator {
     return operands[0] - operands[1];
   }
 
+  @Override
+  public CharSequence getSymbol() {
+    return null;
+  }
+
 }
