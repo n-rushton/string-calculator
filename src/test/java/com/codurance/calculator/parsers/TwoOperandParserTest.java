@@ -19,11 +19,14 @@ public class TwoOperandParserTest {
     @ParameterizedTest
     @MethodSource("generateAdditionEquations")
     public void extract_two_numbers_from_addition_equation(String equation, List<Integer> expectedList) {
-        TwoOperandParser parser = new TwoOperandParser();
+        Operator operator = mock(Operator.class);
+        when(operator.getSymbol()).thenReturn("+");
+        Equation expectedEquation = new Equation(operator, expectedList);
+        TwoOperandParser parser = new TwoOperandParser(List.of(operator));
 
-        List<Integer> resultantList = parser.parse(equation);
+        Equation result = parser.parseExpression(equation);
 
-        assertEquals(expectedList, resultantList);
+        assertEquals(expectedEquation, result);
     }
 
     static Stream<Arguments> generateAdditionEquations() {
@@ -44,11 +47,14 @@ public class TwoOperandParserTest {
     @ParameterizedTest
     @MethodSource("generateSubtractionEquations")
     public void extract_two_numbers_from_subtraction_equation(String equation, List<Integer> expectedList) {
-        TwoOperandParser parser = new TwoOperandParser();
+        Operator operator = mock(Operator.class);
+        when(operator.getSymbol()).thenReturn("-");
+        Equation expectedEquation = new Equation(operator, expectedList);
+        TwoOperandParser parser = new TwoOperandParser(List.of(operator));
 
-        List<Integer> resultantList = parser.parse(equation);
+        Equation result = parser.parseExpression(equation);
 
-        assertEquals(expectedList, resultantList);
+        assertEquals(expectedEquation, result);
     }
 
     static Stream<Arguments> generateSubtractionEquations() {
