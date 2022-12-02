@@ -1,6 +1,8 @@
 package com.codurance.calculator.parsers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -59,11 +61,27 @@ public class TwoOperandParserTest {
 
     @Test
     public void extract_equation_from_expression() {
-        Operator operator = new Add();
+        Operator operator = mock(Operator.class);
+        when(operator.getSymbol()).thenReturn("+");
         Equation expectedEquation = new Equation(operator, List.of(23,75));
         EquationParser parser = new TwoOperandParser(List.of(operator));
 
         Equation resultantEquation = parser.parseExpression("23 + 75");
+
+        assertEquals(expectedEquation, resultantEquation);
+    }
+
+    @Test
+    public void extract_correct_operand_for_equation_from_expression() {
+        Operator operatorToUse = mock(Operator.class);
+        when(operatorToUse.getSymbol()).thenReturn("-");
+        Operator dontUseOperator = mock(Operator.class);
+        when(dontUseOperator.getSymbol()).thenReturn("/");
+
+        Equation expectedEquation = new Equation(operatorToUse, List.of(53,97));
+        EquationParser parser = new TwoOperandParser(List.of(dontUseOperator, operatorToUse));
+
+        Equation resultantEquation = parser.parseExpression("53 - 97");
 
         assertEquals(expectedEquation, resultantEquation);
     }
