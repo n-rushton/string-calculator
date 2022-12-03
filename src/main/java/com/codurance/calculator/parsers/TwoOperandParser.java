@@ -12,7 +12,7 @@ public class TwoOperandParser implements EquationParser {
     this.operators = operators;
   }
 
-  public List<Integer> parse(String equation) {
+  private List<Integer> parseIntegers(String equation) {
     String equationWithoutSpaces = equation.replace(" ", "");
     String[] operands = equationWithoutSpaces.split("(?<=\\d)[+-]");
 
@@ -24,7 +24,7 @@ public class TwoOperandParser implements EquationParser {
 
   @Override
   public Equation parseExpression(String expression) {
-    List<Integer> operands = parse(expression);
+    List<Integer> operands = parseIntegers(expression);
     Operator operator = getOperator(expression);
     return new Equation(operator, operands);
   }
