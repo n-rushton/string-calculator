@@ -14,6 +14,10 @@ public class Equation {
         this.operands = operands;
     }
 
+    public int execute() {
+      return operator.execute(operands.get(0), operands.get(1));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

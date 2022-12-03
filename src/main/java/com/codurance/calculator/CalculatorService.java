@@ -14,7 +14,7 @@ public class CalculatorService {
   public int calculate(String inputString) {
     Equation equation = parser.parseExpression(inputString);
 
-    int result = equation.operator.execute(equation.operands.get(0), equation.operands.get(1));
+    int result = equation.execute();
 
     return result;
   }
