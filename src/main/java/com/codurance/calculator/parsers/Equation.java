@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class Equation {
-    private Operator operator;
-    private List<Integer> operands;
+    public Operator operator;
+    public List<Integer> operands;
 
     public Equation(Operator operator, List<Integer> operands) {
         this.operator = operator;

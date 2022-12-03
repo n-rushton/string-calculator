@@ -1,6 +1,7 @@
 package com.codurance.calculator;
 
 import com.codurance.calculator.operators.Operator;
+import com.codurance.calculator.parsers.Equation;
 import com.codurance.calculator.parsers.EquationParser;
 import java.util.List;
 
@@ -21,22 +22,10 @@ public class CalculatorService {
   }
 
   public int calculate(String inputString) {
-    List<Integer> operands = parser.parse(inputString);
+    Equation equation = parser.parseExpression(inputString);
 
-    Operator operator = getOperator(inputString);
-
-    int result = operator.execute(operands.get(0), operands.get(1));
+    int result = equation.operator.execute(equation.operands.get(0), equation.operands.get(1));
 
     return result;
-  }
-
-  private Operator getOperator(String expression) {
-    for (Operator operator: operators) {
-      if (expression.contains(operator.getSymbol())) {
-        return operator;
-      }
-    }
-
-    throw new UnsupportedOperationException();
   }
 }
