@@ -21,7 +21,7 @@ public class DoTwoCalculationsAcceptanceTest {
 
         CalculatorService calculatorService = new CalculatorService(
                                                     List.of(new Add(), new Subtract()),
-                                                    new TwoOperandParser());
+                                                    new TwoOperandParser(List.of(new Add(), new Subtract())));
         CalculatorApp calculatorApp = new CalculatorApp(
                                                 mockOutputWriter,
                                                 mockScanner,

@@ -8,10 +8,6 @@ public class TwoOperandParser implements EquationParser {
 
   private List<Operator> operators;
 
-  public TwoOperandParser() {
-    operators = List.of();
-  }
-
   public TwoOperandParser(List<Operator> operators) {
     this.operators = operators;
   }

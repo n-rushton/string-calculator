@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -21,7 +22,7 @@ public class AddNumbersFromConsoleAppAcceptanceTest {
         new CalculatorApp(
                 mockOutputWriter,
                 mockScanner,
-                new CalculatorService(new Add(), new TwoOperandParser())
+                new CalculatorService(new Add(), new TwoOperandParser(List.of(new Add())))
             ).run();
 
         verify(mockOutputWriter, times(1)).printLine("enter calculation:");
