@@ -26,7 +26,7 @@ public class TwoOperandParser implements EquationParser {
   public Equation parseExpression(String expression) {
     List<Integer> operands = parseIntegers(expression);
     Operator operator = getOperator(expression);
-    return new Equation(operator, operands);
+    return new TwoOperandEquation(operator, operands);
   }
 
   private Operator getOperator(String expression) {
