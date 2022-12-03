@@ -14,7 +14,7 @@ public class ConsoleApp {
         new CalculatorApp(
             new ConsoleOutputWriter(),
             new BufferedReader(new InputStreamReader(System.in)),
-            new CalculatorService(new Add(),
+            new CalculatorService(
                     new TwoOperandParser(List.of(
                             new Add(), new Subtract()
                     ))))

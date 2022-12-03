@@ -16,7 +16,7 @@ public class CalculatorServiceAcceptanceTest {
   @Test public void add_two_numbers_together() {
     Operator additionOperator = new Add();
     EquationParser parser = new TwoOperandParser(List.of(additionOperator));
-    CalculatorService calculatorService = new CalculatorService(additionOperator, parser);
+    CalculatorService calculatorService = new CalculatorService(parser);
 
     int result = calculatorService.calculate("1564 + 36574");
 
@@ -26,7 +26,7 @@ public class CalculatorServiceAcceptanceTest {
   @Test public void subtract_two_numbers() {
     Operator subtractionOperator = new Subtract();
     EquationParser parser = new TwoOperandParser(List.of(subtractionOperator));
-    CalculatorService calculatorService = new CalculatorService(subtractionOperator, parser);
+    CalculatorService calculatorService = new CalculatorService(parser);
 
     int result = calculatorService.calculate("2500 - -12");
 

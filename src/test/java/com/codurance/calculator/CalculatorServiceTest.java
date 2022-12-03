@@ -22,7 +22,7 @@ public class CalculatorServiceTest {
     mockAdditionOperator = mock(Operator.class);
     when(mockAdditionOperator.getSymbol()).thenReturn("+");
     mockParser = mock(EquationParser.class);
-    calculatorService = new CalculatorService(mockAdditionOperator,
+    calculatorService = new CalculatorService(
             mockParser);
   }
 

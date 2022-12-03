@@ -20,8 +20,7 @@ public class DoTwoCalculationsAcceptanceTest {
         BufferedReader mockScanner = mock(BufferedReader.class);
 
         CalculatorService calculatorService = new CalculatorService(
-                                                    List.of(new Add(), new Subtract()),
-                                                    new TwoOperandParser(List.of(new Add(), new Subtract())));
+                new TwoOperandParser(List.of(new Add(), new Subtract())));
         CalculatorApp calculatorApp = new CalculatorApp(
                                                 mockOutputWriter,
                                                 mockScanner,

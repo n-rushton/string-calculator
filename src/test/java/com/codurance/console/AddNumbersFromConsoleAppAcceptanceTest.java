@@ -22,7 +22,7 @@ public class AddNumbersFromConsoleAppAcceptanceTest {
         new CalculatorApp(
                 mockOutputWriter,
                 mockScanner,
-                new CalculatorService(new Add(), new TwoOperandParser(List.of(new Add())))
+                new CalculatorService(new TwoOperandParser(List.of(new Add())))
             ).run();
 
         verify(mockOutputWriter, times(1)).printLine("enter calculation:");
