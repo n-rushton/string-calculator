@@ -91,4 +91,19 @@ public class TwoOperandParserTest {
         assertEquals(expectedEquation, resultantEquation);
     }
 
+    @Test
+    public void extract_correct_operator_with_negative_number() {
+        Operator operatorToUse = mock(Operator.class);
+        when(operatorToUse.getSymbol()).thenReturn("+");
+        Operator dontUseOperator = mock(Operator.class);
+        when(dontUseOperator.getSymbol()).thenReturn("-");
+
+        Equation expectedEquation = new TwoOperandEquation(operatorToUse, List.of(-2,8));
+        EquationParser parser = new TwoOperandParser(List.of(dontUseOperator, operatorToUse));
+
+        Equation resultantEquation = parser.parseExpression("-2 + 8");
+
+        assertEquals(expectedEquation, resultantEquation);
+    }
+
 }

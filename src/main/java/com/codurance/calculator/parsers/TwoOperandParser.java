@@ -3,6 +3,8 @@ package com.codurance.calculator.parsers;
 import com.codurance.calculator.operators.Operator;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TwoOperandParser implements EquationParser {
 
@@ -30,10 +32,18 @@ public class TwoOperandParser implements EquationParser {
   }
 
   private Operator getOperator(String expression) {
-    for (Operator operator: operators) {
-      if (expression.contains(operator.getSymbol())) {
-        return operator;
+    expression = expression.replace(" ", "");
+    Pattern pattern = Pattern.compile("(?<=\\d)[+-]");
+    Matcher matcher = pattern.matcher(expression);
+
+    if (matcher.find())
+    {
+      for (Operator operator: operators) {
+        if (matcher.group(0).contains(operator.getSymbol())) {
+          return operator;
+        }
       }
+
     }
 
     throw new UnsupportedOperationException();

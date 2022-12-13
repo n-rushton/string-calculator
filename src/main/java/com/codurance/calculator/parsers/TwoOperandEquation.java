@@ -30,6 +30,14 @@ public class TwoOperandEquation extends Equation {
     }
 
     @Override
+    public String toString() {
+        return "TwoOperandEquation{" +
+            "operator=" + operator.getSymbol() +
+            ", operands=" + operands +
+            '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(operator, operands);
     }
