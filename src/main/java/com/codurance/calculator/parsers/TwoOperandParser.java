@@ -6,18 +6,13 @@ import java.util.List;
 
 public class TwoOperandParser implements EquationParser {
 
-  private List<Operator> operators;
-
-  public TwoOperandParser() {
-    operators = List.of();
-  }
+  private final List<Operator> operators;
 
   public TwoOperandParser(List<Operator> operators) {
     this.operators = operators;
   }
 
-  @Override
-  public List<Integer> parse(String equation) {
+  private List<Integer> parseIntegers(String equation) {
     String equationWithoutSpaces = equation.replace(" ", "");
     String[] operands = equationWithoutSpaces.split("(?<=\\d)[+-]");
 
@@ -29,9 +24,9 @@ public class TwoOperandParser implements EquationParser {
 
   @Override
   public Equation parseExpression(String expression) {
-    List<Integer> operands = parse(expression);
+    List<Integer> operands = parseIntegers(expression);
     Operator operator = getOperator(expression);
-    return new Equation(operator, operands);
+    return new TwoOperandEquation(operator, operands);
   }
 
   private Operator getOperator(String expression) {

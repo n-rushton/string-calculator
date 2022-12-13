@@ -7,7 +7,6 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.stream.Stream;
 
-import com.codurance.calculator.operators.Add;
 import com.codurance.calculator.operators.Operator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +20,7 @@ public class TwoOperandParserTest {
     public void extract_two_numbers_from_addition_equation(String equation, List<Integer> expectedList) {
         Operator operator = mock(Operator.class);
         when(operator.getSymbol()).thenReturn("+");
-        Equation expectedEquation = new Equation(operator, expectedList);
+        Equation expectedEquation = new TwoOperandEquation(operator, expectedList);
         TwoOperandParser parser = new TwoOperandParser(List.of(operator));
 
         Equation result = parser.parseExpression(equation);
@@ -49,7 +48,7 @@ public class TwoOperandParserTest {
     public void extract_two_numbers_from_subtraction_equation(String equation, List<Integer> expectedList) {
         Operator operator = mock(Operator.class);
         when(operator.getSymbol()).thenReturn("-");
-        Equation expectedEquation = new Equation(operator, expectedList);
+        Equation expectedEquation = new TwoOperandEquation(operator, expectedList);
         TwoOperandParser parser = new TwoOperandParser(List.of(operator));
 
         Equation result = parser.parseExpression(equation);
@@ -69,7 +68,7 @@ public class TwoOperandParserTest {
     public void extract_equation_from_expression() {
         Operator operator = mock(Operator.class);
         when(operator.getSymbol()).thenReturn("+");
-        Equation expectedEquation = new Equation(operator, List.of(23,75));
+        Equation expectedEquation = new TwoOperandEquation(operator, List.of(23,75));
         EquationParser parser = new TwoOperandParser(List.of(operator));
 
         Equation resultantEquation = parser.parseExpression("23 + 75");
@@ -84,7 +83,7 @@ public class TwoOperandParserTest {
         Operator dontUseOperator = mock(Operator.class);
         when(dontUseOperator.getSymbol()).thenReturn("/");
 
-        Equation expectedEquation = new Equation(operatorToUse, List.of(53,97));
+        Equation expectedEquation = new TwoOperandEquation(operatorToUse, List.of(53,97));
         EquationParser parser = new TwoOperandParser(List.of(dontUseOperator, operatorToUse));
 
         Equation resultantEquation = parser.parseExpression("53 - 97");
