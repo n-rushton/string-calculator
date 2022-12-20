@@ -1,24 +1,22 @@
 package com.codurance.calculator;
 
-import com.codurance.calculator.operators.Operator;
+import com.codurance.calculator.parsers.Equation;
 import com.codurance.calculator.parsers.EquationParser;
-import java.util.List;
 
 public class CalculatorService {
 
-  private final Operator operator;
   private final EquationParser parser;
 
-  public CalculatorService(Operator operator, EquationParser parser) {
-    this.operator = operator;
+  public CalculatorService(EquationParser parser) {
     this.parser = parser;
   }
 
-  public int calculate(String s) {
-    List<Integer> operands = parser.parse(s);
+  public int calculate(String inputString) {
+    Equation equation = parser.parseExpression(inputString);
 
-    int result = operator.execute(operands.get(0), operands.get(1));
+    int result = equation.execute();
 
     return result;
   }
+
 }

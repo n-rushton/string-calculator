@@ -2,6 +2,7 @@ package com.codurance.calculator.operators;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -19,6 +20,11 @@ class SubtractTest {
     int result = operator.execute(firstNumber, secondNumber);
 
     assertEquals(expectedAnswer, result);
+  }
+
+  @Test
+  public void get_symbol_returns_minus() {
+    assertEquals("-", new Subtract().getSymbol());
   }
 
 }

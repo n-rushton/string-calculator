@@ -7,9 +7,9 @@ import java.io.IOException;
 
 public class CalculatorApp {
 
-    private OutputWriter outputWriter;
-    private BufferedReader inputScanner;
-    private CalculatorService calculatorService;
+    private final OutputWriter outputWriter;
+    private final BufferedReader inputScanner;
+    private final CalculatorService calculatorService;
 
     CalculatorApp(OutputWriter outputWriter, BufferedReader inputScanner, CalculatorService calculatorService) {
         this.outputWriter = outputWriter;

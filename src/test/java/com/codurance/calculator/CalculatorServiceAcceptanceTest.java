@@ -9,12 +9,14 @@ import com.codurance.calculator.parsers.EquationParser;
 import com.codurance.calculator.parsers.TwoOperandParser;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 public class CalculatorServiceAcceptanceTest {
 
   @Test public void add_two_numbers_together() {
-    EquationParser parser = new TwoOperandParser();
     Operator additionOperator = new Add();
-    CalculatorService calculatorService = new CalculatorService(additionOperator, parser);
+    EquationParser parser = new TwoOperandParser(List.of(additionOperator));
+    CalculatorService calculatorService = new CalculatorService(parser);
 
     int result = calculatorService.calculate("1564 + 36574");
 
@@ -22,9 +24,9 @@ public class CalculatorServiceAcceptanceTest {
   }
 
   @Test public void subtract_two_numbers() {
-    EquationParser parser = new TwoOperandParser();
     Operator subtractionOperator = new Subtract();
-    CalculatorService calculatorService = new CalculatorService(subtractionOperator, parser);
+    EquationParser parser = new TwoOperandParser(List.of(subtractionOperator));
+    CalculatorService calculatorService = new CalculatorService(parser);
 
     int result = calculatorService.calculate("2500 - -12");
 

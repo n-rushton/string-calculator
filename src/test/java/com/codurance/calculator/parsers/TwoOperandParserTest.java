@@ -1,9 +1,14 @@
 package com.codurance.calculator.parsers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.util.List;
 import java.util.stream.Stream;
+
+import com.codurance.calculator.operators.Operator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,11 +18,14 @@ public class TwoOperandParserTest {
     @ParameterizedTest
     @MethodSource("generateAdditionEquations")
     public void extract_two_numbers_from_addition_equation(String equation, List<Integer> expectedList) {
-        TwoOperandParser parser = new TwoOperandParser();
+        Operator operator = mock(Operator.class);
+        when(operator.getSymbol()).thenReturn("+");
+        Equation expectedEquation = new TwoOperandEquation(operator, expectedList);
+        TwoOperandParser parser = new TwoOperandParser(List.of(operator));
 
-        List<Integer> resultantList = parser.parse(equation);
+        Equation result = parser.parseExpression(equation);
 
-        assertEquals(expectedList, resultantList);
+        assertEquals(expectedEquation, result);
     }
 
     static Stream<Arguments> generateAdditionEquations() {
@@ -38,11 +46,14 @@ public class TwoOperandParserTest {
     @ParameterizedTest
     @MethodSource("generateSubtractionEquations")
     public void extract_two_numbers_from_subtraction_equation(String equation, List<Integer> expectedList) {
-        TwoOperandParser parser = new TwoOperandParser();
+        Operator operator = mock(Operator.class);
+        when(operator.getSymbol()).thenReturn("-");
+        Equation expectedEquation = new TwoOperandEquation(operator, expectedList);
+        TwoOperandParser parser = new TwoOperandParser(List.of(operator));
 
-        List<Integer> resultantList = parser.parse(equation);
+        Equation result = parser.parseExpression(equation);
 
-        assertEquals(expectedList, resultantList);
+        assertEquals(expectedEquation, result);
     }
 
     static Stream<Arguments> generateSubtractionEquations() {
@@ -51,6 +62,48 @@ public class TwoOperandParserTest {
             Arguments.of("-25 - 5", List.of(-25, 5)),
             Arguments.of("25 - -5", List.of(25, -5))
         );
+    }
+
+    @Test
+    public void extract_equation_from_expression() {
+        Operator operator = mock(Operator.class);
+        when(operator.getSymbol()).thenReturn("+");
+        Equation expectedEquation = new TwoOperandEquation(operator, List.of(23,75));
+        EquationParser parser = new TwoOperandParser(List.of(operator));
+
+        Equation resultantEquation = parser.parseExpression("23 + 75");
+
+        assertEquals(expectedEquation, resultantEquation);
+    }
+
+    @Test
+    public void extract_correct_operand_for_equation_from_expression() {
+        Operator operatorToUse = mock(Operator.class);
+        when(operatorToUse.getSymbol()).thenReturn("-");
+        Operator dontUseOperator = mock(Operator.class);
+        when(dontUseOperator.getSymbol()).thenReturn("/");
+
+        Equation expectedEquation = new TwoOperandEquation(operatorToUse, List.of(53,97));
+        EquationParser parser = new TwoOperandParser(List.of(dontUseOperator, operatorToUse));
+
+        Equation resultantEquation = parser.parseExpression("53 - 97");
+
+        assertEquals(expectedEquation, resultantEquation);
+    }
+
+    @Test
+    public void extract_correct_operator_with_negative_number() {
+        Operator operatorToUse = mock(Operator.class);
+        when(operatorToUse.getSymbol()).thenReturn("+");
+        Operator dontUseOperator = mock(Operator.class);
+        when(dontUseOperator.getSymbol()).thenReturn("-");
+
+        Equation expectedEquation = new TwoOperandEquation(operatorToUse, List.of(-2,8));
+        EquationParser parser = new TwoOperandParser(List.of(dontUseOperator, operatorToUse));
+
+        Equation resultantEquation = parser.parseExpression("-2 + 8");
+
+        assertEquals(expectedEquation, resultantEquation);
     }
 
 }
