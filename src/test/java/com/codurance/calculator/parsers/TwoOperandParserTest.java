@@ -98,7 +98,7 @@ public class TwoOperandParserTest {
         Operator dontUseOperator = mock(Operator.class);
         when(dontUseOperator.getSymbol()).thenReturn("-");
 
-        Equation expectedEquation = new TwoOperandEquation(operatorToUse, List.of(-2,8));
+        Equation expectedEquation = new TwoOperandEquation(operatorToUse, List.of(-2,10));
         EquationParser parser = new TwoOperandParser(List.of(dontUseOperator, operatorToUse));
 
         Equation resultantEquation = parser.parseExpression("-2 + 8");
