@@ -11,4 +11,7 @@ orbs:
 workflows:
   checkout-build-test:
     jobs:
-      - gradle/test
+      - gradle/test:
+          filters:
+            tags:
+              only: /pr/
