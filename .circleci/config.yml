@@ -14,4 +14,4 @@ workflows:
       - gradle/test:
           filters:
             tags:
-              only: /pr/
+              only: /^pr.*/
