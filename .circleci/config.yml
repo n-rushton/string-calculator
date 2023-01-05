@@ -10,8 +10,9 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   checkout-build-test:
+    filters:
+      tags:
+        only: /^pr.*/
     jobs:
-      - gradle/test:
-          filters:
-            tags:
-              only: /^pr.*/
+      gradle/test:
+
