@@ -10,5 +10,5 @@ workflows:
     when:
       equal: [ pr, << pipeline.git.tag >> ]
     jobs:
-       - gradle/test
+      - gradle/test
 
