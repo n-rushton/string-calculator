@@ -26,11 +26,12 @@ public class LexerTest {
                 Arguments.of("2", List.of(new LexerToken(TokenType.NUMBER, "2", 0))),
                 Arguments.of("10", List.of(new LexerToken(TokenType.NUMBER, "10", 0))),
                 Arguments.of("1050 ", List.of(
-                    new LexerToken(TokenType.NUMBER, "1050", 0),
-                    new LexerToken(TokenType.WHITESPACE, " ", 4)))
-
+                        new LexerToken(TokenType.NUMBER, "1050", 0),
+                        new LexerToken(TokenType.WHITESPACE, " ", 4))),
+                Arguments.of("1234 ", List.of(
+                        new LexerToken(TokenType.NUMBER, "1234", 0),
+                        new LexerToken(TokenType.WHITESPACE, " ", 4))),
         );
     }
-
 }
 

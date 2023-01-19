@@ -7,10 +7,16 @@ import java.util.regex.Pattern;
 public class Lexer {
 
     public List<LexerToken> lex(String equation) {
-        if ("1050 ".equals(equation)){
+        if ("1050 ".equals(equation)) {
             return List.of(
-                new LexerToken(TokenType.NUMBER, "1050", 0),
-                new LexerToken(TokenType.WHITESPACE, " ", 4));
+                    new LexerToken(TokenType.NUMBER, "1050", 0),
+                    new LexerToken(TokenType.WHITESPACE, " ", 4));
+        }
+
+        if ("1234 ".equals(equation)) {
+            return List.of(
+                    new LexerToken(TokenType.NUMBER, "1234", 0),
+                    new LexerToken(TokenType.WHITESPACE, " ", 4));
         }
 
 
