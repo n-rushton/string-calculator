@@ -22,8 +22,9 @@ public class LexerTest {
     static Stream<Arguments> generateLexInput() {
         return Stream.of(
                 Arguments.of(" ", List.of(new LexerToken(TokenType.WHITESPACE, " ", 0))),
-                Arguments.of("1", List.of(new LexerToken(TokenType.NUMBER, "1", 0)))
-        );
+                Arguments.of("1", List.of(new LexerToken(TokenType.NUMBER, "1", 0))),
+                Arguments.of("2", List.of(new LexerToken(TokenType.NUMBER, "2", 0)))
+            );
     }
 
 }
