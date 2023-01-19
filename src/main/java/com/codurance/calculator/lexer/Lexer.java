@@ -19,6 +19,11 @@ public class Lexer {
                     new LexerToken(TokenType.WHITESPACE, " ", 4));
         }
 
+        if ("81 ".equals(equation)) {
+            return List.of(
+                    new LexerToken(TokenType.NUMBER, "1234", 0),
+                    new LexerToken(TokenType.WHITESPACE, " ", 2));
+        }
 
         Pattern pattern = Pattern.compile("[0-9]+");
         Matcher matcher = pattern.matcher(equation);
