@@ -2,11 +2,11 @@ package com.codurance.calculator.lexer;
 
 import java.util.Objects;
 
-public class LexerToken {
+public class LexerToken implements Comparable<LexerToken> {
 
     private final TokenType tokenType;
     private final String text;
-    private final int startingPos;
+    public final int startingPos;
 
     public LexerToken(TokenType tokenType, String text, int startingPos) {
         this.tokenType = tokenType;
@@ -34,5 +34,10 @@ public class LexerToken {
                 ", text='" + text + '\'' +
                 ", startingPos=" + startingPos +
                 '}';
+    }
+
+    @Override
+    public int compareTo(LexerToken lexerToken) {
+        return Integer.compare(this.startingPos, lexerToken.startingPos);
     }
 }

@@ -17,12 +17,17 @@ public class Lexer {
 
         if (numberMatcher.find()) {
             String number = numberMatcher.group(0);
-            lexerTokens.add(new LexerToken(TokenType.NUMBER, number, 0));
+            lexerTokens.add(new LexerToken(TokenType.NUMBER, number, numberMatcher.start(0)));
         }
 
-        if (equation.endsWith(SPACE)) {
-            lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, equation.length() - 1));
+        Pattern spacePattern = Pattern.compile(SPACE);
+        Matcher spaceMatcher = spacePattern.matcher(equation);
+
+        if (spaceMatcher.find()) {
+            lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, spaceMatcher.start(0)));
         }
+
+        lexerTokens.sort(LexerToken::compareTo);
 
         return lexerTokens;
     }
