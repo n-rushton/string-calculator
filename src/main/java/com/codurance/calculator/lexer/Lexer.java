@@ -13,16 +13,16 @@ public class Lexer {
         String space = " ";
         String number1050 = "1050";
         if ((number1050 + space).equals(equation)) {
-            lexerTokens.add(new LexerToken(TokenType.NUMBER, number1050, 0));
+            addNumberToken(number1050);
         }
 
         String number1234 = "1234";
         if ((number1234 + space).equals(equation)) {
-            lexerTokens.add(new LexerToken(TokenType.NUMBER, number1234, 0));
+            addNumberToken(number1234);
         }
         String number81 = "81";
         if ((number81 + space).equals(equation)) {
-            lexerTokens.add(new LexerToken(TokenType.NUMBER, number81, 0));
+            addNumberToken(number81);
         }
 
         if (equation.endsWith(space)) {
@@ -36,5 +36,9 @@ public class Lexer {
         }
 
         return lexerTokens;
+    }
+
+    private void addNumberToken(String number) {
+        lexerTokens.add(new LexerToken(TokenType.NUMBER, number, 0));
     }
 }
