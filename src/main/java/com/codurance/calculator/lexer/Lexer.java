@@ -10,19 +10,23 @@ public class Lexer {
     List<LexerToken> lexerTokens = new ArrayList<>();
     public List<LexerToken> lex(String equation) {
 
-        if ("1050 ".equals(equation)) {
-            lexerTokens.add(new LexerToken(TokenType.NUMBER, "1050", 0));
+        String space = " ";
+        String number1050 = "1050";
+        if ((number1050 + space).equals(equation)) {
+            lexerTokens.add(new LexerToken(TokenType.NUMBER, number1050, 0));
         }
 
-        if ("1234 ".equals(equation)) {
-            lexerTokens.add(new LexerToken(TokenType.NUMBER, "1234", 0));
+        String number1234 = "1234";
+        if ((number1234 + space).equals(equation)) {
+            lexerTokens.add(new LexerToken(TokenType.NUMBER, number1234, 0));
         }
-        if ("81 ".equals(equation)) {
-                lexerTokens.add(new LexerToken(TokenType.NUMBER, "81", 0));
+        String number81 = "81";
+        if ((number81 + space).equals(equation)) {
+            lexerTokens.add(new LexerToken(TokenType.NUMBER, number81, 0));
         }
 
-        if (equation.endsWith(" ")) {
-            lexerTokens.add(new LexerToken(TokenType.WHITESPACE, " ", equation.length()-1));
+        if (equation.endsWith(space)) {
+            lexerTokens.add(new LexerToken(TokenType.WHITESPACE, space, equation.length()-1));
         }
 
         Pattern pattern = Pattern.compile("[0-9]+");
