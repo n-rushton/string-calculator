@@ -11,20 +11,18 @@ public class Lexer {
     List<LexerToken> lexerTokens = new ArrayList<>();
     public List<LexerToken> lex(String equation) {
 
-        String number1050 = "1050";
-        isNumberFollowedBySpace(equation, number1050);
+        Pattern oneOrMoreNumbersPattern = Pattern.compile("[0-9]+");
+        Matcher numberMatcher = oneOrMoreNumbersPattern.matcher(equation);
+        if (numberMatcher.find()){
+            String number = numberMatcher.group(0);
+            isNumberFollowedBySpace(equation, number);
+        }
 
-        String number1234 = "1234";
-        isNumberFollowedBySpace(equation, number1234);
-        String number81 = "81";
-        isNumberFollowedBySpace(equation, number81);
 
         if (equation.endsWith(SPACE)) {
             lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, equation.length()-1));
         }
 
-        Pattern oneOrMoreNumbersPattern = Pattern.compile("[0-9]+");
-        Matcher numberMatcher = oneOrMoreNumbersPattern.matcher(equation);
         if (numberMatcher.matches()) {
             lexerTokens.add( new LexerToken(TokenType.NUMBER, equation, 0));
         }
