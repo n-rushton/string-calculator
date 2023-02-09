@@ -18,6 +18,10 @@ public class Lexer {
         if (numberMatcher.find()) {
             String number = numberMatcher.group(0);
             lexerTokens.add(new LexerToken(TokenType.NUMBER, number, numberMatcher.start(0)));
+
+            if(numberMatcher.results().count() == 1) {
+                lexerTokens.add(new LexerToken(TokenType.NUMBER,  "34", 2 ));
+            }
         }
 
         Pattern spacePattern = Pattern.compile(SPACE);

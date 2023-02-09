@@ -44,7 +44,11 @@ public class LexerTest {
                 Arguments.of("2 34", List.of(
                         new LexerToken(TokenType.NUMBER, "2", 0),
                         new LexerToken(TokenType.WHITESPACE, " ", 1),
-                        new LexerToken(TokenType.NUMBER, "34", 2)))
+                        new LexerToken(TokenType.NUMBER, "34", 2))),
+                Arguments.of("101 22", List.of(
+                        new LexerToken(TokenType.NUMBER, "101", 0),
+                        new LexerToken(TokenType.WHITESPACE, " ", 3),
+                        new LexerToken(TokenType.NUMBER, "22", 4)))
         );
     }
 }
