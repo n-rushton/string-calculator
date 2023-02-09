@@ -2,8 +2,10 @@ package com.codurance.calculator.lexer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 
 public class Lexer {
 
@@ -15,13 +17,9 @@ public class Lexer {
         Pattern oneOrMoreNumbersPattern = Pattern.compile("[0-9]+");
         Matcher numberMatcher = oneOrMoreNumbersPattern.matcher(equation);
 
-        if (numberMatcher.find()) {
+        while (numberMatcher.find()) {
             String number = numberMatcher.group(0);
             lexerTokens.add(new LexerToken(TokenType.NUMBER, number, numberMatcher.start(0)));
-
-            if(numberMatcher.results().count() == 1) {
-                lexerTokens.add(new LexerToken(TokenType.NUMBER,  "34", 2 ));
-            }
         }
 
         Pattern spacePattern = Pattern.compile(SPACE);
