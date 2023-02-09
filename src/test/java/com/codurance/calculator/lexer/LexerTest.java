@@ -36,7 +36,11 @@ public class LexerTest {
                         new LexerToken(TokenType.WHITESPACE, " ", 2))),
                 Arguments.of(" 81", List.of(
                     new LexerToken(TokenType.WHITESPACE, " ", 0),
-                    new LexerToken(TokenType.NUMBER, "81", 1)))
+                    new LexerToken(TokenType.NUMBER, "81", 1))),
+                Arguments.of(" 81 ", List.of(
+                        new LexerToken(TokenType.WHITESPACE, " ", 0),
+                        new LexerToken(TokenType.NUMBER, "81", 1),
+                        new LexerToken(TokenType.WHITESPACE, " ", 3)))
         );
     }
 }

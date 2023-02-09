@@ -25,6 +25,9 @@ public class Lexer {
 
         if (spaceMatcher.find()) {
             lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, spaceMatcher.start(0)));
+            if (spaceMatcher.results().count() == 1) {
+                lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, 3));
+            }
         }
 
         lexerTokens.sort(LexerToken::compareTo);
