@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LexerTest {
+class LexerTest {
 
     @ParameterizedTest
     @MethodSource("generateLexInput")
-    public void extract(String equation, List<LexerToken> expectedList) {
+    void extract(String equation, List<LexerToken> expectedList) {
         List<LexerToken> result = new Lexer().lex(equation);
 
         assertEquals(expectedList, result);
@@ -53,7 +53,7 @@ public class LexerTest {
                     new LexerToken(TokenType.NUMBER, "101", 0),
                     new LexerToken(TokenType.WHITESPACE, " ", 3),
                     new LexerToken(TokenType.NUMBER, "22", 4),
-                    new LexerToken(TokenType.WHITESPACE, " ", 5)))
+                    new LexerToken(TokenType.WHITESPACE, " ", 6)))
         );
     }
 }

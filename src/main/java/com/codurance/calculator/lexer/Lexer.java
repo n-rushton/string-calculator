@@ -23,11 +23,8 @@ public class Lexer {
         Pattern spacePattern = Pattern.compile(SPACE);
         Matcher spaceMatcher = spacePattern.matcher(equation);
 
-        if (spaceMatcher.find()) {
+        while (spaceMatcher.find()) {
             lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, spaceMatcher.start(0)));
-            if (spaceMatcher.results().count() == 1) {
-                lexerTokens.add(new LexerToken(TokenType.WHITESPACE, SPACE, 3));
-            }
         }
 
         lexerTokens.sort(LexerToken::compareTo);
