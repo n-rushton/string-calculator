@@ -14,7 +14,7 @@ class LexerTest {
 
     @ParameterizedTest
     @MethodSource("generateLexInput")
-    void extract(String equation, List<LexerToken> expectedList) {
+    void given_numbers_and_whitespaces_create_lexer_tokens(String equation, List<LexerToken> expectedList) {
         List<LexerToken> result = new Lexer(
                 List.of(
                         new com.codurance.calculator.lexer.lexerTokenTypes.Number(), new Whitespace()
@@ -22,6 +22,10 @@ class LexerTest {
         ).lex(equation);
 
         assertEquals(expectedList, result);
+    }
+
+    void given_addition_operator_generate_lexer_tokens(String equation, List<LexerToken> expectedList) {
+
     }
 
     static Stream<Arguments> generateLexInput() {
