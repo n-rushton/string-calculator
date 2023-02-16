@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lexer {
-
-    public static final String SPACE = " ";
     private final List<LexerTokenType> lexerTokenTypes;
     List<LexerToken> lexerTokens = new ArrayList<>();
 
