@@ -1,5 +1,6 @@
 package com.codurance.calculator.lexer;
 
+import com.codurance.calculator.lexer.lexerTokenTypes.Whitespace;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,7 +15,11 @@ class LexerTest {
     @ParameterizedTest
     @MethodSource("generateLexInput")
     void extract(String equation, List<LexerToken> expectedList) {
-        List<LexerToken> result = new Lexer().lex(equation);
+        List<LexerToken> result = new Lexer(
+                List.of(
+                        new com.codurance.calculator.lexer.lexerTokenTypes.Number(), new Whitespace()
+                )
+        ).lex(equation);
 
         assertEquals(expectedList, result);
     }
