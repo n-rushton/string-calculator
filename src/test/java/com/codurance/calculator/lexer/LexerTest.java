@@ -1,9 +1,6 @@
 package com.codurance.calculator.lexer;
 
-import com.codurance.calculator.lexer.lexerTokenTypes.Addition;
-import com.codurance.calculator.lexer.lexerTokenTypes.Multiplication;
-import com.codurance.calculator.lexer.lexerTokenTypes.Subtract;
-import com.codurance.calculator.lexer.lexerTokenTypes.Whitespace;
+import com.codurance.calculator.lexer.lexerTokenTypes.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -46,11 +43,17 @@ class LexerTest {
         assertEquals(expectedList, result);
     }
 
-
     @Test
     void given_multiplication_operator_generate_lexer_token() {
         List<LexerToken> result = new Lexer(List.of(new Multiplication())).lex("*");
         List<LexerToken> expectedList = List.of(new LexerToken(TokenType.MULTIPLICATION, "*", 0));
+        assertEquals(expectedList, result);
+    }
+
+    @Test
+    void given_division_operator_generate_lexer_token() {
+        List<LexerToken> result = new Lexer(List.of(new Division())).lex("/");
+        List<LexerToken> expectedList = List.of(new LexerToken(TokenType.DIVISION, "/", 0));
         assertEquals(expectedList, result);
     }
 
