@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class LexerTokenType {
+public abstract class LexerTokenParser {
     protected String regex;
     protected TokenType tokenType;
 

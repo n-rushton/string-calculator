@@ -1,21 +1,21 @@
 package com.codurance.calculator.lexer;
 
-import com.codurance.calculator.lexer.lexerTokenTypes.LexerTokenType;
+import com.codurance.calculator.lexer.lexerTokenTypes.LexerTokenParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Lexer {
-    private final List<LexerTokenType> lexerTokenTypes;
+    private final List<LexerTokenParser> lexerTokenParsers;
     List<LexerToken> lexerTokens = new ArrayList<>();
 
-    Lexer(List<LexerTokenType> lexerTokenTypes) {
-        this.lexerTokenTypes = lexerTokenTypes;
+    Lexer(List<LexerTokenParser> lexerTokenParsers) {
+        this.lexerTokenParsers = lexerTokenParsers;
     }
 
     public List<LexerToken> lex(String equation) {
 
-        lexerTokenTypes.forEach(lexerTokenType -> {
+        lexerTokenParsers.forEach(lexerTokenType -> {
             lexerTokens.addAll(lexerTokenType.extractTokens(equation));
         });
 

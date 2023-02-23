@@ -18,7 +18,7 @@ class LexerTest {
     void given_numbers_and_whitespaces_create_lexer_tokens(String equation, List<LexerToken> expectedList) {
         List<LexerToken> result = new Lexer(
                 List.of(
-                        new com.codurance.calculator.lexer.lexerTokenTypes.Number(), new Whitespace()
+                        new NumberParser(), new WhitespaceParser()
                 )
         ).lex(equation);
 
@@ -32,27 +32,27 @@ class LexerTest {
     @ParameterizedTest
     @MethodSource("generateAdditionInput")
     void given_addition_operator_generate_lexer_tokens(String equation, List<LexerToken> expectedList) {
-        List<LexerToken> result = new Lexer(List.of(new Addition())).lex(equation);
+        List<LexerToken> result = new Lexer(List.of(new AdditionParser())).lex(equation);
         assertEquals(expectedList, result);
     }
 
     @Test
     void given_subtraction_operator_generate_lexer_token() {
-        List<LexerToken> result = new Lexer(List.of(new Subtraction())).lex("-");
+        List<LexerToken> result = new Lexer(List.of(new SubtractionParser())).lex("-");
         List<LexerToken> expectedList = List.of(new LexerToken(TokenType.SUBTRACTION, "-", 0));
         assertEquals(expectedList, result);
     }
 
     @Test
     void given_multiplication_operator_generate_lexer_token() {
-        List<LexerToken> result = new Lexer(List.of(new Multiplication())).lex("*");
+        List<LexerToken> result = new Lexer(List.of(new MultiplicationParser())).lex("*");
         List<LexerToken> expectedList = List.of(new LexerToken(TokenType.MULTIPLICATION, "*", 0));
         assertEquals(expectedList, result);
     }
 
     @Test
     void given_division_operator_generate_lexer_token() {
-        List<LexerToken> result = new Lexer(List.of(new Division())).lex("/");
+        List<LexerToken> result = new Lexer(List.of(new DivisionParser())).lex("/");
         List<LexerToken> expectedList = List.of(new LexerToken(TokenType.DIVISION, "/", 0));
         assertEquals(expectedList, result);
     }
