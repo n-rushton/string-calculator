@@ -38,8 +38,8 @@ class LexerTest {
 
     @Test
     void given_subtraction_operator_generate_lexer_token() {
-        List<LexerToken> result = new Lexer(List.of(new Subtract())).lex("-");
-        List<LexerToken> expectedList = List.of(new LexerToken(TokenType.SUBTRACT, "-", 0));
+        List<LexerToken> result = new Lexer(List.of(new Subtraction())).lex("-");
+        List<LexerToken> expectedList = List.of(new LexerToken(TokenType.SUBTRACTION, "-", 0));
         assertEquals(expectedList, result);
     }
 
