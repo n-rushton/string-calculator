@@ -1,6 +1,7 @@
 package com.codurance.calculator.lexer;
 
 import com.codurance.calculator.lexer.lexerTokenTypes.Addition;
+import com.codurance.calculator.lexer.lexerTokenTypes.Multiplication;
 import com.codurance.calculator.lexer.lexerTokenTypes.Subtract;
 import com.codurance.calculator.lexer.lexerTokenTypes.Whitespace;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,14 @@ class LexerTest {
     void given_subtraction_operator_generate_lexer_token() {
         List<LexerToken> result = new Lexer(List.of(new Subtract())).lex("-");
         List<LexerToken> expectedList = List.of(new LexerToken(TokenType.SUBTRACT, "-", 0));
+        assertEquals(expectedList, result);
+    }
+
+
+    @Test
+    void given_multiplication_operator_generate_lexer_token() {
+        List<LexerToken> result = new Lexer(List.of(new Multiplication())).lex("*");
+        List<LexerToken> expectedList = List.of(new LexerToken(TokenType.MULTIPLICATION, "*", 0));
         assertEquals(expectedList, result);
     }
 
