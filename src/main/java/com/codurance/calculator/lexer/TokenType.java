@@ -1,6 +1,6 @@
 package com.codurance.calculator.lexer;
 
 public enum TokenType {
-    NUMBER, WHITESPACE
+    NUMBER, WHITESPACE, ADDITION
 }
 
