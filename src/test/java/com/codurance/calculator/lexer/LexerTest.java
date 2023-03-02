@@ -1,6 +1,6 @@
 package com.codurance.calculator.lexer;
 
-import com.codurance.calculator.lexer.lexerTokenTypes.*;
+import com.codurance.calculator.lexer.lexerTokenParsers.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

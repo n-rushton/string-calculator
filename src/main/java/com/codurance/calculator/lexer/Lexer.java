@@ -1,6 +1,6 @@
 package com.codurance.calculator.lexer;
 
-import com.codurance.calculator.lexer.lexerTokenTypes.LexerTokenParser;
+import com.codurance.calculator.lexer.lexerTokenParsers.LexerTokenParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,7 @@ public class Lexer {
 
             while (matcher.find()) {
                 String foundString = matcher.group(0);
-//                lexerTokens.add(new LexerToken(lexerTokenParser.tokenType, foundString, matcher.start(0)));
-                lexerTokens.add(lexerTokenParser.createToken(lexerTokenParser.tokenType, foundString, matcher.start(0)));
+                lexerTokens.add(lexerTokenParser.createToken(foundString, matcher.start(0)));
             }
         });
 
