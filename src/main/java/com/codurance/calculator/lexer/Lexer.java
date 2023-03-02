@@ -18,8 +18,7 @@ public class Lexer {
         List<LexerToken> lexerTokens = new ArrayList<>();
 
         lexerTokenParsers.forEach(lexerTokenParser -> {
-            Pattern pattern = Pattern.compile(lexerTokenParser.regex);
-            Matcher matcher = pattern.matcher(equation);
+            Matcher matcher = lexerTokenParser.match(equation);
 
             while (matcher.find()) {
                 String foundString = matcher.group(0);
