@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Lexer {
     private final List<LexerTokenParser> lexerTokenParsers;
 
-    Lexer(List<LexerTokenParser> lexerTokenParsers) {
+    public Lexer(List<LexerTokenParser> lexerTokenParsers) {
         this.lexerTokenParsers = lexerTokenParsers;
     }
 
