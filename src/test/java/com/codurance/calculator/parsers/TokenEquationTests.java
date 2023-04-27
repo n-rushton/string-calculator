@@ -35,7 +35,14 @@ public class TokenEquationTests {
                         new LexerToken(TokenType.NUMBER, "2", 0),
                         new LexerToken(TokenType.ADDITION, "+", 1),
                         new LexerToken(TokenType.NUMBER, "2", 2)
-                ), 4)
+                ), 4),
+                Arguments.of(List.of(
+                        new LexerToken(TokenType.NUMBER, "5", 0),
+                        new LexerToken(TokenType.WHITESPACE, " ", 1),
+                        new LexerToken(TokenType.ADDITION, "+", 2),
+                        new LexerToken(TokenType.WHITESPACE, " ", 3),
+                        new LexerToken(TokenType.NUMBER, "2", 4)
+                ), 7)
         );
     }
 
@@ -60,7 +67,14 @@ public class TokenEquationTests {
                         new LexerToken(TokenType.NUMBER, "2", 0),
                         new LexerToken(TokenType.SUBTRACTION, "-", 1),
                         new LexerToken(TokenType.NUMBER, "2", 2)
-                ), 0)
+                ), 0),
+                Arguments.of(List.of(
+                        new LexerToken(TokenType.NUMBER, "5", 0),
+                        new LexerToken(TokenType.WHITESPACE, " ", 1),
+                        new LexerToken(TokenType.SUBTRACTION, "-", 2),
+                        new LexerToken(TokenType.WHITESPACE, " ", 3),
+                        new LexerToken(TokenType.NUMBER, "2", 4)
+                ), 3)
         );
     }
 
