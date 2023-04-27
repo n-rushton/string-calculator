@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class LexerToken implements Comparable<LexerToken> {
 
-    private final TokenType tokenType;
+    public final TokenType tokenType;
     public final String text;
     public final int startingPos;
 

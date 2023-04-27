@@ -1,6 +1,7 @@
 package com.codurance.calculator.parsers;
 
 import com.codurance.calculator.lexer.LexerToken;
+import com.codurance.calculator.lexer.TokenType;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,9 @@ public class TokenEquation extends Equation {
 
     @Override
     public int execute() {
+        if (lexerTokens.get(1).tokenType == TokenType.SUBTRACTION) {
+            return parseInt(lexerTokens.get(0).text) - parseInt(lexerTokens.get(2).text);
+        }
         return parseInt(lexerTokens.get(0).text) + parseInt(lexerTokens.get(2).text);
     }
 

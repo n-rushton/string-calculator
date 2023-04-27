@@ -39,4 +39,29 @@ public class TokenEquationTests {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("generateSubtractionEquations")
+    public void subtract_two_numbers_together(List<LexerToken> tokens, int expectedResult) {
+        Equation equation = new TokenEquation(tokens);
+
+        int result = equation.execute();
+
+        assertEquals(expectedResult, result);
+    }
+
+    static Stream<Arguments> generateSubtractionEquations() {
+        return Stream.of(
+                Arguments.of(List.of(
+                        new LexerToken(TokenType.NUMBER, "11", 0),
+                        new LexerToken(TokenType.SUBTRACTION, "-", 1),
+                        new LexerToken(TokenType.NUMBER, "6", 2)
+                ), 5),
+                Arguments.of(List.of(
+                        new LexerToken(TokenType.NUMBER, "2", 0),
+                        new LexerToken(TokenType.SUBTRACTION, "-", 1),
+                        new LexerToken(TokenType.NUMBER, "2", 2)
+                ), 0)
+        );
+    }
+
 }
