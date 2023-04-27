@@ -39,7 +39,7 @@ public class CalculatorServiceAcceptanceTest {
     assertEquals(2512, result);
   }
 
-  @Test public void newLexerParser() {
+  @Test public void newLexerParser_add_two_numbers_together() {
     List<LexerTokenParser> lexerTokenParsers = List.of(new NumberParser(), new WhitespaceParser(), new AdditionParser());
     EquationParser parser = new LexerParser(new Lexer(lexerTokenParsers));
 

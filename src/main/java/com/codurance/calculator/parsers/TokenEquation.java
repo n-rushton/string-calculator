@@ -5,6 +5,8 @@ import com.codurance.calculator.lexer.LexerToken;
 import java.util.List;
 import java.util.Objects;
 
+import static java.lang.Integer.parseInt;
+
 public class TokenEquation extends Equation {
     private final List<LexerToken> lexerTokens;
 
@@ -14,7 +16,7 @@ public class TokenEquation extends Equation {
 
     @Override
     public int execute() {
-        return 0;
+        return parseInt(lexerTokens.get(0).text) + parseInt(lexerTokens.get(2).text);
     }
 
     @Override
