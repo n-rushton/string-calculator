@@ -49,5 +49,4 @@ public class CalculatorServiceAcceptanceTest {
 
     assertEquals(38138, result);
   }
-
 }
