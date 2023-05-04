@@ -17,8 +17,8 @@ import java.util.List;
 public class CalculatorServiceAcceptanceTest {
 
   @Test public void add_two_numbers_together() {
-    Operator additionOperator = new Add();
-    EquationParser parser = new TwoOperandParser(List.of(additionOperator));
+    List<LexerTokenParser> lexerTokenParsers = List.of(new NumberParser(), new WhitespaceParser(), new AdditionParser());
+    EquationParser parser = new LexerParser(new Lexer(lexerTokenParsers));
     CalculatorService calculatorService = new CalculatorService(parser);
 
     int result = calculatorService.calculate("1564 + 36574");
@@ -37,14 +37,4 @@ public class CalculatorServiceAcceptanceTest {
     assertEquals(2512, result);
   }
 
-  @Test public void newLexerParser_add_two_numbers_together() {
-    List<LexerTokenParser> lexerTokenParsers = List.of(new NumberParser(), new WhitespaceParser(), new AdditionParser());
-    EquationParser parser = new LexerParser(new Lexer(lexerTokenParsers));
-
-    CalculatorService calculatorService = new CalculatorService(parser);
-
-    int result = calculatorService.calculate("1564 + 36574");
-
-    assertEquals(38138, result);
-  }
 }
