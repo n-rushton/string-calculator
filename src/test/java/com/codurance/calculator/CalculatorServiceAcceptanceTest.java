@@ -3,10 +3,7 @@ package com.codurance.calculator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.codurance.calculator.lexer.Lexer;
-import com.codurance.calculator.lexer.lexerTokenParsers.AdditionParser;
-import com.codurance.calculator.lexer.lexerTokenParsers.LexerTokenParser;
-import com.codurance.calculator.lexer.lexerTokenParsers.NumberParser;
-import com.codurance.calculator.lexer.lexerTokenParsers.WhitespaceParser;
+import com.codurance.calculator.lexer.lexerTokenParsers.*;
 import com.codurance.calculator.operators.Add;
 import com.codurance.calculator.operators.Operator;
 import com.codurance.calculator.operators.Subtract;
@@ -30,8 +27,9 @@ public class CalculatorServiceAcceptanceTest {
   }
 
   @Test public void subtract_two_numbers() {
-    Operator subtractionOperator = new Subtract();
-    EquationParser parser = new TwoOperandParser(List.of(subtractionOperator));
+    List<LexerTokenParser> lexerTokenParsers = List.of(new NumberParser(), new WhitespaceParser(), new AdditionParser(), new SubtractionParser());
+    EquationParser parser = new LexerParser(new Lexer(lexerTokenParsers));
+
     CalculatorService calculatorService = new CalculatorService(parser);
 
     int result = calculatorService.calculate("2500 - -12");
