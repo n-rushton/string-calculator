@@ -22,6 +22,9 @@ public class TokenEquation extends Equation {
         tokens.removeIf(lexerToken -> lexerToken.tokenType == TokenType.WHITESPACE);
 
         if (tokens.get(1).tokenType == TokenType.SUBTRACTION) {
+            if (tokens.size() == 4) {
+                return parseInt(tokens.get(0).text) - parseInt(tokens.get(2).text + tokens.get(3).text);
+            }
             return parseInt(tokens.get(0).text) - parseInt(tokens.get(2).text);
         }
         return parseInt(tokens.get(0).text) + parseInt(tokens.get(2).text);
