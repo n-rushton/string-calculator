@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class AddNumbersFromConsoleAppAcceptanceTest {
@@ -45,6 +46,11 @@ public class AddNumbersFromConsoleAppAcceptanceTest {
 
         verify(mockOutputWriter, times(1)).printLine("enter calculation:");
         verify(mockOutputWriter, times(1)).printLine("6");
+    }
+
+    @Test
+    public void failing_test() {
+        assertTrue(false);
     }
 
 }
