@@ -48,9 +48,4 @@ public class AddNumbersFromConsoleAppAcceptanceTest {
         verify(mockOutputWriter, times(1)).printLine("6");
     }
 
-    @Test
-    public void failing_test() {
-        assertTrue(false);
-    }
-
 }
